@@ -5,7 +5,8 @@ using UnityEngine;
 public class CollectableRotate : MonoBehaviour
 {
     [SerializeField] int rotateSpeed = 1;
-
+    //test
+    //testing for repository
     void Update()
     {
         transform.Rotate(0, rotateSpeed, 0, Space.World);
