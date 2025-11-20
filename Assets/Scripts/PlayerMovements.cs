@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PlayerMovements : MonoBehaviour    
 {
-    public float playerSpeed = 2;
+    public float playerSpeed = 6;
     public float horizontalSpeed = 3;
     public float rightLimitt = 5.5f;
     public float leftLimitt = -5.5f;
