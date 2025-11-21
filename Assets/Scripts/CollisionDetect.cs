@@ -1,14 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class CollisionDetect : Monobehaviour
 
+public class CollisionDetect : MonoBehaviour
 {
-	[SerializeField] GameObject thePlayer;
-	[SerializeFiled] GameObject playerAnim;
-	void onTriggerEnter(Collider other)
-	{
-		thePlayer.GetComponent<PlayerMovements>().enabled = false;
-		playerAnim.GetComponent<Animator>().Play("Stuble Backwards");
-	}
+
+    [SerializeField] GameObject thePlayer;
+    [SerializeField] GameObject playerAnim;
+    [SerializeField] AudioSource collisionFX;
+    [SerializeField] GameObject mainCam;
+    [SerializeField] GameObject fadeOut;
+
+    void OnTriggerEnter(Collider other)
+    {
+        StartCoroutine(CollisionEnd());
+    }
+
+    IEnumerator CollisionEnd()
+    {
+        collisionFX.Play();
+        thePlayer.GetComponent<PlayerMovements>().enabled = false;
+        playerAnim.GetComponent<Animator>().Play("Stumble Backwards");
+        mainCam.GetComponent<Animator>().Play("CollisionCam");
+        yield return new WaitForSeconds(3);
+        fadeOut.SetActive(true);
+    }
 }
